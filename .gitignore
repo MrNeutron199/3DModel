@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 examples
+DamagedHelmet
+CarModel.glb
+house.glb
 
 # Editor directories and files
 .vscode/*
