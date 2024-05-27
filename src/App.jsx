@@ -37,11 +37,10 @@ export default function App() {
   controls.target.set(0, 0, 0);
   controls.maxDistance = 6.3;
   controls.minDistance = 6.5;
-  // const loader = new GLTFLoader().setPath("/3DModel/public/models/");
   const loader = new GLTFLoader().setPath("/models/");
   const dracoLoader = new DRACOLoader();
   loader.setDRACOLoader(dracoLoader);
-  dracoLoader.setDecoderPath("/draco/");
+  dracoLoader.setDecoderPath("/public/draco/");
   let mixer;
   loader.load(
     "LittlestTokyo.glb",
