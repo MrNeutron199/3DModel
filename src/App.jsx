@@ -40,7 +40,7 @@ export default function App() {
   const loader = new GLTFLoader().setPath("/models/");
   const dracoLoader = new DRACOLoader();
   loader.setDRACOLoader(dracoLoader);
-  dracoLoader.setDecoderPath("/public/draco/");
+  dracoLoader.setDecoderPath("/draco/");
   let mixer;
   loader.load(
     "LittlestTokyo.glb",
