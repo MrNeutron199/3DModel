@@ -71,7 +71,7 @@ export default function App() {
   // scene.fog = new THREE.Fog(0xa0a0a0, 10, 50);
   //Hemisphere Light
   const spotLight = new THREE.SpotLight(0xffffff, 100);
-  spotLight.position.set(0, 8, 0);
+  spotLight.position.set(-5, 8, 5);
   spotLight.angle = Math.PI / 6;
   spotLight.intensity = 180;
   spotLight.penumbra = 0.5;
@@ -85,39 +85,55 @@ export default function App() {
 
   // scene.add(new THREE.SpotLightHelper(spotLight));
   const gui = new GUI();
-  const pointLight = new THREE.PointLight(0xffffff, 3, 10);
-  const helper = new THREE.PointLightHelper(pointLight);
+  const pointLight1 = new THREE.PointLight(0xffffff, 3, 10);
+  const helper = new THREE.PointLightHelper(pointLight1);
   scene.add(helper);
-  pointLight.position.set(0, 0, 0);
-  pointLight.castShadow = false;
-  pointLight.intensity = 1;
-  scene.add(pointLight);
+  pointLight1.position.set(-1.5, 2, -3);
+  pointLight1.castShadow = false;
+  pointLight1.intensity = 5;
+  scene.add(pointLight1);
   let settings = {
     X: 0,
     Y: 0,
     Z: 0,
     intensity: 1,
-    power: 1,
+    // power: 1,
   };
+
+  const pointLight2 = new THREE.PointLight(0xffffff, 3, 10);
+  // const helper = new THREE.PointLightHelper(pointLight);
+  // scene.add(helper);
+  pointLight2.position.set(4, 3, 3);
+  pointLight2.castShadow = false;
+  pointLight2.intensity = 5;
+  scene.add(pointLight2);
+
+  const pointLight3 = new THREE.PointLight(0xffffff, 3, 10);
+  // const helper = new THREE.PointLightHelper(pointLight3);
+  // scene.add(helper);
+  pointLight3.position.set(2, 2, -1);
+  pointLight3.castShadow = false;
+  pointLight3.intensity = 5;
+  scene.add(pointLight3);
 
   const folder1 = gui.addFolder("Coordinates");
   const folder2 = gui.addFolder("Light settings");
   folder1.add(settings, "X").onChange(function f() {
-    pointLight.position.x = settings.X;
+    pointLight1.position.x = settings.X;
   });
   folder1.add(settings, "Y").onChange(function f() {
-    pointLight.position.y = settings.Y;
+    pointLight1.position.y = settings.Y;
   });
   folder1.add(settings, "Z").onChange(function f() {
-    pointLight.position.z = settings.Z;
+    pointLight1.position.z = settings.Z;
   });
 
   folder2.add(settings, "intensity").onChange(function (val) {
-    pointLight.intensity = val;
+    pointLight1.intensity = val;
   });
-  folder2.add(settings, "power").onChange(function (val) {
-    pointLight.power = val;
-  });
+  // folder2.add(settings, "power").onChange(function (val) {
+  //   pointLight.power = val;
+  // });
   // folder2.add(settings, "left").onChange(function (val) {
   //   dirLight.shadow.camera.left = val;
   // });
@@ -133,7 +149,7 @@ export default function App() {
 
   const clock = new THREE.Clock();
   const mesh = new THREE.Mesh(
-    new THREE.PlaneGeometry(100, 100),
+    new THREE.PlaneGeometry(10, 10),
     new THREE.MeshPhongMaterial({ color: 0xcbcbcb, depthWrite: false })
   );
   mesh.rotation.x = -Math.PI / 2;
