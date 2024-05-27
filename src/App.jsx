@@ -55,6 +55,10 @@ export default function App() {
         if (object.isMesh) object.castShadow = true;
       });
       scene.add(model);
+      model.name = "Little Shop";
+      setTimeout(() => {
+        console.log(scene.children);
+      }, 5000);
       model.rotation.y = 1.99;
     },
     undefined,
@@ -84,21 +88,22 @@ export default function App() {
   scene.add(spotLight);
 
   // scene.add(new THREE.SpotLightHelper(spotLight));
-  const gui = new GUI();
+  // const gui = new GUI();
   const pointLight1 = new THREE.PointLight(0xffffff, 3, 10);
-  const helper = new THREE.PointLightHelper(pointLight1);
-  scene.add(helper);
+  // const helper = new THREE.PointLightHelper(pointLight1);
+  // scene.add(helper);
   pointLight1.position.set(-1.5, 2, -3);
   pointLight1.castShadow = false;
   pointLight1.intensity = 5;
   scene.add(pointLight1);
-  let settings = {
-    X: 0,
-    Y: 0,
-    Z: 0,
-    intensity: 1,
-    // power: 1,
-  };
+  // let settings = {
+  //   // X: 0,
+  //   // Y: 0,
+  //   // Z: 0,
+  //   // intensity: 1,
+  //   animations: true,
+  //   // power: 1,
+  // };
 
   const pointLight2 = new THREE.PointLight(0xffffff, 3, 10);
   // const helper = new THREE.PointLightHelper(pointLight);
@@ -116,21 +121,16 @@ export default function App() {
   pointLight3.intensity = 5;
   scene.add(pointLight3);
 
-  const folder1 = gui.addFolder("Coordinates");
-  const folder2 = gui.addFolder("Light settings");
-  folder1.add(settings, "X").onChange(function f() {
-    pointLight1.position.x = settings.X;
-  });
-  folder1.add(settings, "Y").onChange(function f() {
-    pointLight1.position.y = settings.Y;
-  });
-  folder1.add(settings, "Z").onChange(function f() {
-    pointLight1.position.z = settings.Z;
-  });
-
-  folder2.add(settings, "intensity").onChange(function (val) {
-    pointLight1.intensity = val;
-  });
+  // const folder1 = gui.addFolder("Coordinates");
+  // const folder2 = gui.addFolder("Visual settings");
+  // folder2.add(settings, "animations").onChange(function (val) {
+  //   if (mixer.isRunning()) {
+  //     mixer.stop();
+  //   } else {
+  //     // mixer.clipAction(scene.children[3]).play();
+  //     console.log("Want to play");
+  //   }
+  // });
   // folder2.add(settings, "power").onChange(function (val) {
   //   pointLight.power = val;
   // });
